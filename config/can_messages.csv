@@ -1,0 +1,17 @@
+name,can_id,period_ms,dlc,signal,start_byte,length,scale,offset,unit,description
+ENGINE_STATUS,0x100,100,8,engine_rpm,0,2,1,0,rpm,Unsigned big-endian engine speed
+ENGINE_STATUS,0x100,100,8,coolant_temp,2,2,1,0,degC,Temperature represented as signed 16-bit raw value
+ENGINE_STATUS,0x100,100,8,vehicle_speed,4,2,1,0,km/h,Unsigned big-endian vehicle speed
+ENGINE_STATUS,0x100,100,8,rolling_counter,6,1,1,0,count,8-bit modulo-256 freshness counter
+ENGINE_STATUS,0x100,100,8,crc8,7,1,1,0,hex,CRC-8/SAE-J1850 over bytes 0 through 6
+BATTERY_STATUS,0x110,100,8,battery_voltage,0,2,1,0,mV,Unsigned millivolts
+BATTERY_STATUS,0x110,100,8,battery_current,2,2,1,0,mA,Signed 16-bit current
+BATTERY_STATUS,0x110,100,8,battery_temp,4,2,1,0,degC,Signed 16-bit temperature
+BATTERY_STATUS,0x110,100,8,rolling_counter,6,1,1,0,count,8-bit modulo-256 freshness counter
+BATTERY_STATUS,0x110,100,8,crc8,7,1,1,0,hex,CRC-8/SAE-J1850 over bytes 0 through 6
+BODY_STATUS,0x120,100,8,body_flags,0,1,1,0,bitfield,Bit0 headlights; bit1 door open
+BODY_STATUS,0x120,100,8,reserved,1,5,1,0,bytes,Reserved bytes for future body-control signals
+BODY_STATUS,0x120,100,8,rolling_counter,6,1,1,0,count,8-bit modulo-256 freshness counter
+BODY_STATUS,0x120,100,8,crc8,7,1,1,0,hex,CRC-8/SAE-J1850 over bytes 0 through 6
+UDS_REQUEST,0x7E0,on-demand,8,uds_payload,0,8,1,0,bytes,UDS diagnostic request over ISO-TP
+UDS_RESPONSE,0x7E8,on-demand,8,uds_payload,0,8,1,0,bytes,UDS diagnostic response over ISO-TP

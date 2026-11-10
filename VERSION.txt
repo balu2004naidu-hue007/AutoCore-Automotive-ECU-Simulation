@@ -1,0 +1,5 @@
+AutoCore 1.6.1
+Automotive Multi-ECU Communication, Diagnostics and CAN Controller Fault-Confinement Platform
+Build target: C++17
+Dashboard server: Python 3.10+ standard library, localhost only
+Windows setup: automatic winget bootstrap for CMake, Visual Studio C++ Build Tools and Python

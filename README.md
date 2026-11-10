@@ -4,14 +4,16 @@
 
 > **Scope:** This is an educational software simulation. It is not connected to a real vehicle, does not implement the electrical/bit-level CAN physical layer, and is not an OEM-certified diagnostic stack.
 
-## Download the complete source
+## Browse or download the complete source
 
-The complete Windows-ready source package is included in this repository:
+AutoCore v1.6.1 is now checked into this repository, so you can browse its project files directly:
 
-- **[AutoCore v1.6.1 Windows source ZIP](AutoCore_v1.6.1_windows_startup_fix.zip)**
+- Core implementation: [src/](src/) and [include/](include/)
+- Build and tests: [CMakeLists.txt](CMakeLists.txt) and [tests/](tests/)
+- Configuration and dashboard: [config/](config/), [dashboard/](dashboard/), and [scripts/](scripts/)
+- Detailed project guide: [AUTOCOREREADME.md](AUTOCOREREADME.md)
 
-The ZIP contains the complete C++ source tree, headers, dashboard, Python local server, tests, configuration, Windows launcher, scripts, documentation, gitignore file, and MIT license.
-
+You can also download the Windows-ready package: [AutoCore v1.6.1 source ZIP](AutoCore_v1.6.1_windows_startup_fix.zip).
 ## Features
 
 ### Four simulated ECUs

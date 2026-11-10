@@ -1,0 +1,79 @@
+AUTOCORE v1.6.1 — START HERE
+============================
+
+ONE-CLICK WINDOWS START
+1. Download AutoCore_v1.6.1_complete_windows.zip.
+2. Extract the ZIP into a new folder, for example:
+   Documents\Projects\AutoCore_v1.6.1
+3. Open the extracted AutoCore folder.
+4. Double-click Run_AutoCore.bat.
+5. On first launch, the setup checks for CMake, Visual Studio C++ Build Tools
+   (MSVC) and Python 3.10+. Missing tools are installed through winget.
+6. Approve installer/UAC prompts. Internet is required for first-time setup.
+   If Windows requests a restart, restart and run the batch file again.
+7. The launcher configures build-windows-v1.6.1, compiles the C++ project,
+   runs automated tests, starts the C++ simulation and opens the dashboard.
+8. Dashboard URL: http://127.0.0.1:8765/
+9. Keep the terminal window open. Press Ctrl+C in that window to stop the app.
+
+FIRST: VERIFY THE ORIGINAL DIAGNOSTIC PROJECT
+1. Observe changing RPM, temperature, battery values and CAN frame count.
+2. Click the top-bar "Run self-test" button.
+3. Wait for "COMPLETE: 7 / 7 test groups passed".
+4. Open Diagnostics and inspect the six DTC monitor definitions.
+5. Manually inject P0217 + P0562, read DTC records and read P0217 snapshot.
+6. Click Recover all. Active faults should recover after valid samples return.
+7. Use Clear Diagnostic Information (0x14) to clear retained records.
+
+MAJOR FEATURE: CAN CONTROLLER HEALTH
+1. Open "CAN Controller Health" in the left sidebar.
+2. Select Engine ECU.
+3. Click "24 TX errors · Error Passive". TEC should reach 192 and state
+   should become ERROR_PASSIVE. Error Passive can still transmit.
+4. Click "Reset simulation + counters" before the next separate demonstration.
+5. Select Engine ECU again and click "32 TX errors · Bus-Off". TEC reaches
+   256, state becomes BUS_OFF and Engine telemetry stops.
+6. Open CAN Network. Verify Engine frames stop while Battery and Body frames
+   continue. Open Diagnostics after the timeout; U0100 should qualify.
+7. Return to CAN Controller Health. Make sure all continuous TX injectors
+   are disabled. Click "Start Bus-Off recovery".
+8. Watch recovery progress from 0/128 to 128/128. At completion, Engine returns
+   to ERROR_ACTIVE and Engine telemetry resumes.
+9. Check Event Log for Error Passive, Bus-Off and recovery messages.
+10. For receive-error confinement, reset, select Battery and click
+    "128 RX errors · Error Passive". REC should reach 128.
+11. Reset between demonstrations for a healthy baseline.
+
+WHAT THE CONTROLLER PAGE MEANS
+- TEC: Transmit Error Counter. A modeled TX error adds 8; successful TX -1.
+- REC: Receive Error Counter. A modeled RX error adds 1; successful RX reduces it.
+- ERROR_ACTIVE: TEC and REC are below 128.
+- ERROR_PASSIVE: TEC or REC is at least 128, and TEC is below 256.
+- BUS_OFF: TEC reaches 256; the node stops transmitting.
+- Recovery: 128 eligible observations, one per distinct 100 ms simulation tick.
+  This is a discrete educational approximation, not physical bit-level timing.
+
+OPEN THE SOURCE CODE
+Open VS Code -> File -> Open Folder -> select the extracted AutoCore folder.
+Recommended files:
+  src\can_controller.cpp          TEC/REC counters and controller state machine
+  include\autocore\can_controller.hpp  Controller types and API
+  src\vehicle_network.cpp         ECU scheduling, isolation and recovery
+  src\engine.cpp                  Simulation commands, events and JSON state
+  dashboard\index.html            Interactive dashboard pages
+  dashboard\server.py             Browser-to-C++ localhost bridge
+  tests\test_autocore.cpp         C++ regression tests
+  tests\test_dashboard_integration.py  HTTP/C++ end-to-end tests
+  docs\                            Architecture, demo guide and project report
+
+TROUBLESHOOTING
+- If winget is missing, install/update App Installer from https://aka.ms/getwinget.
+- Do not open dashboard\index.html directly; use Run_AutoCore.bat.
+- If the browser does not open, enter http://127.0.0.1:8765/ manually.
+- Keep the terminal open while using the dashboard.
+- If the guided test is running, do not click other scenario controls.
+
+SCOPE
+AutoCore is an educational host simulation. The CAN controller model is
+software-based; it is not a physical CAN implementation or ISO/OEM-certified
+stack. No physical ECU or vehicle is connected.

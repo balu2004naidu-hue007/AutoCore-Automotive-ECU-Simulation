@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AutoCore v1.6.1 | Automotive Network Operations</title>
+<style>
+:root{color-scheme:dark;--bg:#0a101b;--side:#0d1624;--panel:#111d2d;--panel2:#152337;--line:#23354d;--muted:#91a4bd;--text:#e7eef8;--blue:#64a9ff;--cyan:#54d5dc;--green:#4bd39a;--amber:#f0bb61;--red:#ff6979;--shadow:0 14px 35px #0003}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 65% -25%,#1b3452 0,transparent 45%),var(--bg);color:var(--text);font:14px/1.5 Inter,"Segoe UI",Arial,sans-serif}button,select,input{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:242px minmax(0,1fr);min-height:100vh}.sidebar{background:linear-gradient(180deg,#0d1726,#0b1320);border-right:1px solid var(--line);padding:24px 15px;display:flex;flex-direction:column;gap:26px}.brand{display:flex;align-items:center;gap:12px;padding:0 10px}.brand-mark{height:38px;width:38px;border-radius:12px;background:linear-gradient(135deg,#2e80d9,#53d7d0);display:grid;place-items:center;color:white;font-weight:900;font-size:18px;box-shadow:0 8px 22px #3287d944}.brand-name{font-size:17px;font-weight:800;letter-spacing:.03em}.brand-sub{font-size:10px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}.nav-label{font-size:10px;text-transform:uppercase;color:#657b96;letter-spacing:.15em;padding:0 12px 7px}.nav{display:grid;gap:5px}.nav button{border:1px solid transparent;background:transparent;color:#aabbd0;text-align:left;border-radius:10px;padding:11px 12px;display:flex;align-items:center;gap:12px;font-weight:600}.nav button:hover{background:#15243a;color:#fff}.nav button.active{background:linear-gradient(90deg,#18385b,#14263d);border-color:#28517b;color:#eaf4ff}.nav .ico{width:20px;text-align:center;color:#8db8e8;font-size:16px}.side-foot{margin-top:auto;border:1px solid var(--line);border-radius:12px;padding:13px;background:#111e2f}.side-foot strong{display:block;font-size:12px}.side-foot span{font-size:11px;color:var(--muted)}.main{min-width:0;padding:25px clamp(18px,3vw,42px) 50px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:26px}.crumb{font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}.page-title{font-size:26px;font-weight:800;letter-spacing:-.03em;margin:2px 0}.page-sub{color:var(--muted);font-size:12px}.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.live-pill,.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #285c4b;background:#102c25;color:#76e1b5;border-radius:30px;padding:7px 11px;font-size:11px;font-weight:800;letter-spacing:.05em}.dot{height:7px;width:7px;background:var(--green);border-radius:50%;box-shadow:0 0 0 4px #4bd39a20}.live-pill.paused{border-color:#6a552f;background:#302719;color:#f5c875}.live-pill.paused .dot{background:var(--amber);box-shadow:0 0 0 4px #f0bb6120}.btn{border:1px solid #2b405b;background:#17263a;color:#dce8f6;border-radius:9px;padding:9px 13px;font-weight:700;font-size:12px;transition:.15s}.btn:hover{border-color:#5c9de4;background:#1a304a}.btn.primary{background:linear-gradient(135deg,#287ed3,#2464aa);border-color:#398be0;color:white;box-shadow:0 6px 18px #246eb544}.btn.danger{background:#351d2a;border-color:#633345;color:#ff9aa5}.btn.success{background:#123329;border-color:#24624b;color:#80e4b8}.btn.small{padding:6px 9px;font-size:11px}.btn:disabled{opacity:.45;cursor:not-allowed}.section{display:none}.section.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin:0 0 14px}.section-head h2{font-size:17px;margin:0;font-weight:800}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.muted{color:var(--muted)}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{background:linear-gradient(145deg,#142238,#101a29 74%);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);min-width:0}.kpi-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px;font-weight:700}.kpi-icon{height:29px;width:29px;border-radius:9px;background:#1e3855;color:#83baff;display:grid;place-items:center;font-size:15px}.kpi-value{font-size:29px;font-weight:800;letter-spacing:-.04em;margin:11px 0 0;font-variant-numeric:tabular-nums}.kpi-unit{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:0}.kpi-foot{font-size:11px;color:var(--muted);margin-top:2px}.good{color:var(--green)!important}.warn{color:var(--amber)!important}.bad{color:var(--red)!important}.overview-grid{grid-template-columns:minmax(0,1.6fr) minmax(270px,.9fr);align-items:stretch}.chart-card{padding:17px 17px 12px}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.card-title{font-weight:800;font-size:13px}.card-sub{font-size:11px;color:var(--muted);margin-top:2px}.legend{display:flex;gap:14px;font-size:10px;color:var(--muted);flex-wrap:wrap}.legend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}.chart{height:212px;width:100%;display:block}.ecu-list{display:grid;gap:9px}.ecu-row{border:1px solid var(--line);background:#111e2f;border-radius:11px;padding:12px;display:grid;grid-template-columns:1fr auto;gap:5px;align-items:center}.ecu-row strong{font-size:12px}.ecu-meta{font-size:10px;color:var(--muted)}.status{font-size:10px;padding:4px 8px;border-radius:20px;font-weight:800;letter-spacing:.03em}.status.online{background:#123629;color:#7de1b3}.status.offline{background:#42202b;color:#ff9ba4}.status.warning{background:#382d1b;color:#f3c56e}.ecu-value{grid-column:1/-1;display:flex;gap:15px;flex-wrap:wrap;margin-top:5px}.ecu-value span{font-size:11px;color:#cbd8e8}.ecu-value b{color:#fff;font-variant-numeric:tabular-nums}.lower-grid{grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);margin-top:14px}.event-list{display:grid;gap:9px;max-height:235px;overflow:auto}.event-row{display:grid;grid-template-columns:56px 1fr;gap:10px;font-size:11px;padding-bottom:9px;border-bottom:1px solid #22334a}.event-row:last-child{border:0;padding:0}.event-time{color:#7fa2c9;font:10px Consolas,monospace;padding-top:2px}.event-msg{color:#d9e4f2}.event-level{font-size:9px;font-weight:800;letter-spacing:.07em;margin-right:7px}.event-level.FAULT,.event-level.ERROR{color:var(--red)}.event-level.RECOVERY{color:var(--green)}.event-level.WARN{color:var(--amber)}.event-level.INFO{color:var(--blue)}.control-row{display:flex;gap:8px;flex-wrap:wrap}.control-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}.control-card .left{display:grid;gap:3px}.control-card strong{font-size:13px}.control-card span{font-size:11px;color:var(--muted)}.twocol{grid-template-columns:repeat(2,minmax(0,1fr))}.metric-panel{margin-top:14px}.range-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.range-row input{width:100%;accent-color:#4b9bea}.range-val{font-variant-numeric:tabular-nums;font-weight:800;color:#dbeaff}.ecu-cards{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:14px}.ecu-card h3{font-size:12px;margin:0}.ecu-card .big{font-size:24px;font-weight:800;margin:8px 0}.ecu-card .data-line{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:5px 0;border-bottom:1px solid #22334a}.ecu-card .data-line:last-child{border:0}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}.data-table{border-collapse:collapse;width:100%;min-width:650px;background:#101a29}.data-table th,.data-table td{text-align:left;padding:11px 12px;border-bottom:1px solid #22334a;font-size:11px;white-space:nowrap}.data-table th{background:#17263a;color:#93a9c3;font-size:10px;text-transform:uppercase;letter-spacing:.08em;position:sticky;top:0}.data-table tr:last-child td{border:0}.mono{font-family:Consolas,"Courier New",monospace}.fault-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fault-card{border:1px solid var(--line);background:#111e2f;border-radius:12px;padding:14px}.fault-card h3{font-size:12px;margin:0 0 4px}.fault-card p{font-size:10px;color:var(--muted);min-height:30px;margin:0 0 12px}.fault-card .btn{width:100%}.uds-box{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:end}.field label{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}.field select{width:100%;background:#101b2a;color:var(--text);border:1px solid #344861;border-radius:8px;padding:10px}.uds-response{margin-top:12px;background:#0b1523;border:1px solid #23364e;border-radius:10px;padding:12px}.uds-response .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.uds-response code{display:block;color:#a7d5ff;font-size:12px;margin-top:5px;word-break:break-word}.dtc-grid{grid-template-columns:1fr}.dtc-active{background:#3b202a;color:#ff9ca6}.dtc-inactive{background:#1d2c3e;color:#9db0c6}.logs-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.search{background:#101b2a;border:1px solid #30445e;border-radius:8px;color:var(--text);padding:8px 10px;font-size:11px}.empty{color:var(--muted);font-size:12px;padding:18px;text-align:center}.notice{border:1px solid #3a526f;background:#12243a;color:#bfd5ee;border-radius:10px;padding:11px 13px;font-size:11px;margin-bottom:14px}.notice.fault-active{border-color:#8b4351;background:#351d29;color:#ffd4da}.notice strong{color:#f3f7ff}.fault-codes{font-family:Consolas,monospace;font-weight:800;color:#ff9aa5}.footer{border-top:1px solid var(--line);margin-top:28px;padding-top:14px;color:#72869f;font-size:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.overview-grid,.lower-grid{grid-template-columns:1fr}.fault-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:sticky;top:0;z-index:10;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);gap:9px}.brand{padding:0 5px}.brand-mark{height:30px;width:30px}.brand-name{font-size:14px}.brand-sub{display:none}.nav-label,.side-foot{display:none}.nav{display:flex;overflow-x:auto}.nav button{white-space:nowrap;padding:8px 10px;font-size:11px}.nav .ico{display:none}.main{padding:18px 13px 35px}.topbar{align-items:flex-start}.topbar .page-title{font-size:21px}.top-actions{justify-content:flex-end}.ecu-cards{grid-template-columns:1fr}.fault-grid,.twocol{grid-template-columns:1fr}}
+@media(max-width:430px){.kpis{gap:8px}.card{padding:12px}.kpi-value{font-size:23px}.page-sub{max-width:220px}.topbar{gap:7px}.live-pill{font-size:9px;padding:6px 8px}.btn{padding:8px 9px}}
+
+.controller-health-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:14px}
+.controller-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.controller-control{border:1px solid var(--line);background:#111e2f;border-radius:11px;padding:13px;display:grid;gap:8px}
+.controller-control label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.controller-control select,.controller-control input{width:100%;background:#0d1827;color:var(--text);border:1px solid #344861;border-radius:8px;padding:9px}
+.controller-health-table{min-width:980px}
+.counter-cell{min-width:145px}.counter-track{height:7px;border-radius:99px;background:#26374d;overflow:hidden;margin-top:6px}.counter-fill{height:100%;border-radius:99px;background:var(--cyan)}.counter-fill.warn{background:var(--amber)}.counter-fill.bad{background:var(--red)}
+.controller-state{font-size:10px;font-weight:900;letter-spacing:.04em;padding:5px 8px;border-radius:20px;display:inline-block}.controller-state.active{background:#123629;color:#7de1b3}.controller-state.passive{background:#382d1b;color:#f3c56e}.controller-state.busoff{background:#42202b;color:#ff9ba4}
+.recovery-track{height:8px;background:#26374d;border-radius:99px;overflow:hidden;min-width:110px}.recovery-fill{height:100%;background:linear-gradient(90deg,#3e9eea,#4bd39a);border-radius:99px}
+.controller-explainer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.controller-explainer>div{border:1px solid var(--line);background:#111e2f;border-radius:10px;padding:12px}.controller-explainer strong{display:block;font-size:12px;margin-bottom:4px}.controller-explainer span{font-size:10px;color:var(--muted)}
+@media(max-width:1000px){.controller-controls,.controller-explainer{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.controller-health-grid{grid-template-columns:1fr 1fr}.controller-controls,.controller-explainer{grid-template-columns:1fr}}
+
+</style>
+<style>
+.fault-monitor-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 14px}
+.fault-monitor-card{background:#101c2c;border:1px solid #2a405b;border-radius:11px;padding:12px;min-width:0}
+.fault-monitor-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;font-weight:800}
+.fault-monitor-value{color:#d8e6f7;font-size:11px;margin-top:7px}
+.fault-monitor-card.is-active{border-color:#8b4351;background:#281a27}
+.fault-monitor-card.is-injected{border-color:#8a6a35;background:#292518}
+.fault-monitor-card.is-stored{border-color:#3a5876}
+.demo-panel{margin:14px 0}
+.demo-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.demo-results{display:grid;gap:7px;margin-top:12px}
+.demo-result{display:grid;grid-template-columns:minmax(170px,1fr) auto minmax(170px,1.4fr);gap:10px;align-items:center;border:1px solid #263b54;background:#0f1b2b;border-radius:9px;padding:9px 11px;font-size:11px}
+.demo-result .detail{color:var(--muted)}
+.demo-progress{font-size:11px;color:var(--muted);margin-top:9px}
+.status.pass{background:#123629;color:#7de1b3}.status.fail{background:#42202b;color:#ff9ba4}.status.running{background:#382d1b;color:#f3c56e}
+.quick-diagnostic{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.quick-diagnostic .left{display:grid;gap:3px}.quick-diagnostic .left strong{font-size:13px}.quick-diagnostic .left span{font-size:11px;color:var(--muted)}
+.uds-meaning{margin-top:9px;border-left:3px solid #3c86c8;background:#102035;padding:9px 11px;border-radius:0 8px 8px 0;color:#c5d8ec;font-size:11px}.uds-meaning strong{color:#eef6ff}.uds-meaning.good{border-left-color:var(--green)}.uds-meaning.warn{border-left-color:var(--amber)}.uds-meaning.bad{border-left-color:var(--red)}.dtc-flags{white-space:normal!important;min-width:210px;color:#c5d6ea}.scenario-intro-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.overview-health{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.overview-health .health-copy{display:grid;gap:3px}.overview-health .health-copy strong{font-size:12px}.overview-health .health-copy span{font-size:11px;color:var(--muted)}.overview-health .health-actions{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:1100px){.fault-monitor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.fault-monitor-grid{grid-template-columns:1fr}.demo-result{grid-template-columns:1fr auto}.demo-result .detail{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">A</div><div><div class="brand-name">AUTOCORE</div><div class="brand-sub">Vehicle Network Lab</div></div></div>
+  <div><div class="nav-label">Workspace</div><nav class="nav">
+    <button class="active" data-page="overview"><span class="ico">◫</span> Overview</button>
+    <button data-page="network"><span class="ico">⌁</span> CAN Network</button>
+    <button data-page="controller-health"><span class="ico">ϟ</span> CAN Controller Health</button>
+    <button data-page="diagnostics"><span class="ico">⚕</span> Diagnostics</button>
+    <button data-page="scenario"><span class="ico">⚙</span> Scenario Lab</button>
+    <button data-page="logs"><span class="ico">≡</span> Event Log</button>
+  </nav></div>
+  <div class="side-foot"><strong>HOST SIMULATION · C++17</strong><span>Local loopback dashboard · Not connected to a real vehicle</span></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div class="crumb">Automotive / Multi-ECU Platform</div><div class="page-title" id="pageTitle">Network overview</div><div class="page-sub">Live telemetry and diagnostic state from the C++ simulation engine</div></div><div class="top-actions"><div class="live-pill" id="runPill"><i class="dot"></i><span>SIMULATION RUNNING</span></div><button class="btn" id="globalDemoBtn">▶ Run self-test</button><button class="btn primary" id="runToggle">Ⅱ Pause</button><button class="btn" id="resetBtn">↺ Reset</button></div></header>
+
+<section class="section active" id="page-overview">
+  <div class="grid kpis">
+    <article class="card"><div class="kpi-top"><span>ENGINE SPEED</span><span class="kpi-icon">◉</span></div><div class="kpi-value"><span id="rpm">1,150</span> <span class="kpi-unit">RPM</span></div><div class="kpi-foot" id="rpmFoot">Engine ECU · 0x100</div></article>
+    <article class="card"><div class="kpi-top"><span>COOLANT TEMPERATURE</span><span class="kpi-icon">♨</span></div><div class="kpi-value"><span id="temp">90</span> <span class="kpi-unit">°C</span></div><div class="kpi-foot" id="tempFoot">Within simulated range</div></article>
+    <article class="card"><div class="kpi-top"><span>BATTERY VOLTAGE</span><span class="kpi-icon">ϟ</span></div><div class="kpi-value"><span id="voltage">12.50</span> <span class="kpi-unit">V</span></div><div class="kpi-foot" id="voltageFoot">Battery ECU · 0x110</div></article>
+    <article class="card"><div class="kpi-top"><span>ACTIVE DTCs</span><span class="kpi-icon">!</span></div><div class="kpi-value" id="activeDtcs">0</div><div class="kpi-foot" id="dtcFoot">No active diagnostic faults</div></article>
+  </div>
+  <article class="notice overview-health" id="overviewHealthHint" aria-live="polite"><div class="health-copy"><strong>Healthy baseline — diagnostics are ready</strong><span>Run the guided self-test to inject six controlled faults, check DTCs and UDS responses, then verify recovery.</span></div><div class="health-actions"><button class="btn primary" id="overviewRunDemo">Run diagnostic self-test</button><button class="btn" data-goto="diagnostics">Open Diagnostics</button></div></article>
+  <div class="grid overview-grid">
+    <article class="card chart-card"><div class="card-head"><div><div class="card-title">Powertrain telemetry</div><div class="card-sub">Live engine speed and vehicle velocity · rolling 12-second window · normalized trend scales</div></div><div class="legend"><span><i style="background:#67aaff"></i>RPM</span><span><i style="background:#55d4cf"></i>Speed</span></div></div><canvas class="chart" id="mainChart"></canvas></article>
+    <article class="card"><div class="card-head"><div><div class="card-title">Electronic control units</div><div class="card-sub">Network presence and latest signals</div></div><span class="pill" id="ecuCount">4 / 4 ONLINE</span></div><div class="ecu-list" id="ecuList"></div></article>
+  </div>
+  <div class="grid lower-grid">
+    <article class="card chart-card"><div class="card-head"><div><div class="card-title">Electrical system</div><div class="card-sub">Battery voltage and current</div></div><div class="legend"><span><i style="background:#f0bb61"></i>Voltage</span><span><i style="background:#a58bff"></i>Current</span></div></div><canvas class="chart" id="electricalChart"></canvas></article>
+    <article class="card"><div class="card-head"><div><div class="card-title">Recent activity</div><div class="card-sub">Events generated by ECU and diagnostics logic</div></div><button class="btn small" data-goto="logs">View all</button></div><div class="event-list" id="recentEvents"></div></article>
+  </div>
+</section>
+
+<section class="section" id="page-network">
+  <div class="notice">CAN monitor displays frames actually emitted by the in-process C++ ECU network. IDs and payloads are simulated Classic CAN traffic; they are not captured from a physical bus. Receive acceptance filters affect this monitor only; ECU diagnostics continue to observe the complete virtual network.</div>
+  <article class="card" style="margin-bottom:14px">
+    <div class="card-head"><div><div class="card-title">CAN receive acceptance filter</div><div class="card-sub">Apply a standard 11-bit ID/mask filter to the monitor stream without blocking ECU diagnostics.</div></div><span class="pill" id="canFilterState">ALL FRAMES</span></div>
+    <div class="control-row" style="align-items:end">
+      <div class="field" style="min-width:190px"><label for="canFilterId">CAN identifier</label><select id="canFilterId"><option value="100">Engine status · 0x100</option><option value="110">Battery status · 0x110</option><option value="120">Body status · 0x120</option><option value="7E0">UDS request · 0x7E0</option><option value="7E8">UDS response · 0x7E8</option></select></div>
+      <div class="field" style="min-width:110px"><label for="canFilterMask">11-bit mask (hex)</label><input class="search mono" id="canFilterMask" value="7FF" maxlength="3" inputmode="text"></div>
+      <button class="btn primary" id="applyCanFilter">Apply filter</button>
+      <button class="btn" id="clearCanFilter">Show all frames</button>
+      <span class="muted" id="canFilterStats">Accepted 0 · Filtered out 0</span>
+    </div>
+  </article>
+  <article class="card" style="margin-bottom:14px">
+    <div class="card-head"><div><div class="card-title">Loaded CAN message matrix</div><div class="card-sub">Definitions are loaded and validated from config/can_messages.csv at C++ engine startup.</div></div><span class="pill" id="matrixCount">0 MESSAGES</span></div>
+    <div class="table-wrap"><table class="data-table"><thead><tr><th>Message</th><th>CAN ID</th><th>Period</th><th>DLC</th><th>Signals</th></tr></thead><tbody id="matrixRows"><tr><td colspan="5" class="empty">Loading message matrix…</td></tr></tbody></table></div>
+  </article>
+  <div class="card control-card"><div class="left"><strong>Network activity</strong><span>Frame counters are measured by the simulation engine.</span></div><div class="control-row"><span class="pill" id="framesPill">0 FRAMES</span><a class="btn small" href="/api/export.csv">Export telemetry CSV</a></div></div>
+  <div class="grid kpis">
+    <article class="card"><div class="kpi-top">TOTAL CAN FRAMES <span class="kpi-icon">⌁</span></div><div class="kpi-value" id="frameTotal">0</div><div class="kpi-foot">Arbitrated by virtual CAN scheduler</div></article>
+    <article class="card"><div class="kpi-top">MESSAGE RATE <span class="kpi-icon">◉</span></div><div class="kpi-value"><span id="frameRate">0</span> <span class="kpi-unit">frames/s</span></div><div class="kpi-foot">Measured over recent dashboard interval</div></article>
+    <article class="card"><div class="kpi-top">TELEMETRY PERIOD <span class="kpi-icon">◷</span></div><div class="kpi-value">100 <span class="kpi-unit">ms</span></div><div class="kpi-foot">Configured ECU transmit interval</div></article>
+    <article class="card"><div class="kpi-top">FRAME FORMAT <span class="kpi-icon">▤</span></div><div class="kpi-value">11-bit</div><div class="kpi-foot">Classic CAN · DLC up to 8 bytes</div></article>
+  </div>
+  <article class="card"><div class="card-head"><div><div class="card-title">CAN frame stream</div><div class="card-sub">Most recent frames first · ID, DLC, data and telemetry CRC validation</div></div><span class="pill">LIVE FEED</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Time (ms)</th><th>CAN ID</th><th>Message</th><th>DLC</th><th>Data bytes</th><th>CRC check</th></tr></thead><tbody id="frameRows"><tr><td colspan="6" class="empty">Waiting for CAN traffic...</td></tr></tbody></table></div></article>
+</section>
+
+<section class="section" id="page-controller-health">
+  <div class="notice"><strong>CAN controller fault confinement:</strong> Each ECU has independent Transmit Error Counter (TEC) and Receive Error Counter (REC). Error Passive begins at TEC or REC ≥ 128. Bus-Off occurs when TEC reaches 256. A Bus-Off node stops transmitting while the remaining ECUs continue.</div>
+  <div class="grid controller-health-grid">
+    <article class="card"><div class="kpi-top">ERROR ACTIVE <span class="kpi-icon">●</span></div><div class="kpi-value" id="canActiveCount">4</div><div class="kpi-foot">Controllers available for normal participation</div></article>
+    <article class="card"><div class="kpi-top">ERROR PASSIVE <span class="kpi-icon">◐</span></div><div class="kpi-value" id="canPassiveCount">0</div><div class="kpi-foot">TEC or REC at/above 128</div></article>
+    <article class="card"><div class="kpi-top">BUS-OFF <span class="kpi-icon">⊘</span></div><div class="kpi-value" id="canBusOffCount">0</div><div class="kpi-foot">Controllers removed from transmission</div></article>
+    <article class="card"><div class="kpi-top">RECOVERY EVENTS <span class="kpi-icon">↻</span></div><div class="kpi-value" id="canRecoveryCount">0</div><div class="kpi-foot">Successful Bus-Off recoveries</div></article>
+  </div>
+  <article class="card" style="margin-bottom:14px">
+    <div class="card-head"><div><div class="card-title">Controller fault-injection bench</div><div class="card-sub">Select one ECU, inject transmit/receive errors, then observe TEC, REC and controller state.</div></div><span class="pill">FOUR INDEPENDENT CONTROLLERS</span></div>
+    <div class="controller-controls">
+      <div class="controller-control"><label for="controllerNode">Target ECU</label><select id="controllerNode"><option value="ENGINE">Engine ECU · 0x100</option><option value="BATTERY">Battery ECU · 0x110</option><option value="BODY">Body ECU · 0x120</option><option value="DIAGNOSTICS">Diagnostics ECU · 0x7E8</option></select><span class="muted" style="font-size:10px">All actions affect the selected controller only.</span></div>
+      <div class="controller-control"><label>Transmit error simulation</label><div class="control-row"><button class="btn danger" id="canTxPassive">24 TX errors · Error Passive</button><button class="btn danger" id="canTxBusOff">32 TX errors · Bus-Off</button></div><div class="control-row"><button class="btn" id="canTxToggle">Enable continuous TX errors</button></div><span class="muted" style="font-size:10px">One failed TX event adds 8 to TEC. A successful transmission decrements TEC by 1.</span></div>
+      <div class="controller-control"><label>Receive error simulation</label><div class="control-row"><button class="btn danger" id="canRxPassive">128 RX errors · Error Passive</button></div><div class="control-row"><button class="btn" id="canRxToggle">Enable continuous RX errors</button></div><span class="muted" style="font-size:10px">A receive error adds 1 to REC. A valid reception decrements REC by 1.</span></div>
+    </div>
+    <div class="control-row" style="margin-top:13px"><button class="btn primary" id="canRecoveryBtn">Start Bus-Off recovery</button><button class="btn" id="canHealthReset">Reset simulation + counters</button><span id="canControllerActionHint" class="muted" style="font-size:11px;align-self:center">Recovery requires Bus-Off and all continuous TX injectors disabled.</span></div>
+  </article>
+  <article class="card" style="margin-bottom:14px"><div class="card-head"><div><div class="card-title">Live CAN controller register monitor</div><div class="card-sub">TEC / REC, state transitions, communication counters and recovery progress for all simulated ECUs.</div></div><span class="pill" id="controllerUpdatePill">LIVE · 500 MS REFRESH</span></div><div class="table-wrap"><table class="data-table controller-health-table"><thead><tr><th>Controller</th><th>TEC</th><th>REC</th><th>State</th><th>TX success / errors</th><th>RX success / errors</th><th>Injection</th><th>Bus-Off recovery</th></tr></thead><tbody id="controllerHealthRows"><tr><td colspan="8" class="empty">Waiting for controller state...</td></tr></tbody></table></div></article>
+  <article class="card"><div class="card-head"><div><div class="card-title">Controller fault-confinement states</div><div class="card-sub">Read these thresholds when explaining the demonstration.</div></div></div><div class="controller-explainer">
+    <div><strong><span class="controller-state active">ERROR ACTIVE</span></strong><span>TEC &lt; 128 and REC &lt; 128. The node participates normally in the simulated network.</span></div>
+    <div><strong><span class="controller-state passive">ERROR PASSIVE</span></strong><span>TEC ≥ 128 or REC ≥ 128. The controller remains able to communicate, but is in a degraded error-confinement state.</span></div>
+    <div><strong><span class="controller-state busoff">BUS-OFF</span></strong><span>TEC reaches 256. The node is prevented from transmitting until recovery completes.</span></div>
+  </div><div class="notice" style="margin-top:13px;margin-bottom:0"><strong>Recovery model limitation:</strong> The simulation counts 128 eligible 11-recessive-bit idle-sequence observations, one per 100 ms virtual scheduler cycle. This makes recovery progress visible and testable; it is a discrete educational approximation, not a physical bit-timing or electrical CAN bus model.</div></article>
+</section>
+
+<section class="section" id="page-diagnostics">
+  <div class="grid kpis">
+    <article class="card"><div class="kpi-top">ACTIVE FAULTS <span class="kpi-icon">!</span></div><div class="kpi-value" id="diagActive">0</div><div class="kpi-foot">Currently failing monitor conditions</div></article>
+    <article class="card"><div class="kpi-top">STORED DTCs <span class="kpi-icon">▤</span></div><div class="kpi-value" id="diagStored">0</div><div class="kpi-foot">Current diagnostic record catalog</div></article>
+    <article class="card"><div class="kpi-top">DIAGNOSTIC PROTOCOL <span class="kpi-icon">⌁</span></div><div class="kpi-value" style="font-size:22px">UDS / ISO-TP</div><div class="kpi-foot">In-process request/response path</div></article>
+    <article class="card"><div class="kpi-top">ADDRESSING <span class="kpi-icon">#</span></div><div class="kpi-value" style="font-size:22px">7E0 → 7E8</div><div class="kpi-foot">Functional model uses 11-bit IDs</div></article>
+  </div>
+  <div class="notice" id="diagnosticHint"><strong>Baseline state:</strong> No active faults is normal at startup. Use the quick demonstration below, or open Scenario Lab to inject faults. Then request DTCs with service 0x19 and freeze-frame data with subfunction 0x19 04.</div>
+  <article class="card quick-diagnostic"><div class="left"><strong>Quick diagnostic demonstration</strong><span>Inject two sensor faults into the C++ ECU model. After three distinct 100 ms monitor samples, P0217 and P0562 should progress from PENDING to ACTIVE / CONFIRMED here.</span></div><div class="control-row"><button class="btn danger" id="diagInjectDemo">Inject P0217 + P0562</button><button class="btn" id="diagReadNow">Read DTC records</button><button class="btn success" id="diagRecoverDemo">Recover all</button><button class="btn" data-goto="scenario">Open Scenario Lab</button></div></article>
+  <article class="card" style="margin-bottom:14px"><div class="card-head"><div><div class="card-title">UDS diagnostic console</div><div class="card-sub">Send a real request through AutoCore's C++ UDS / ISO-TP transaction path.</div></div><span class="pill">SERVICE 0x22 / 0x19 / 0x14</span></div>
+    <div class="uds-box"><div class="field"><label for="didSelect">Read data by identifier · service 0x22</label><select id="didSelect"><option value="F40C">F40C — Engine speed (RPM)</option><option value="F405">F405 — Engine coolant temperature</option><option value="F411">F411 — Battery voltage (mV)</option></select></div><button class="btn primary" id="readDid">Send UDS request</button></div>
+    <div class="control-row" style="margin-top:12px"><button class="btn" id="readDtc">Read DTC records · 0x19</button><div class="field" style="min-width:150px"><label for="freezeDtcSelect">Freeze-frame DTC</label><select id="freezeDtcSelect"><option>P0217</option><option>P0562</option><option>U0100</option><option>U0111</option><option>AC0001</option><option>AC0002</option></select></div><button class="btn" id="readFreeze">Read snapshot · 0x19 04</button><button class="btn" id="sessionBtn">Extended session · 0x10</button><button class="btn" id="testerBtn">Tester Present · 0x3E</button><button class="btn" id="resetEcuBtn">ECU reset request · 0x11</button><button class="btn danger" id="clearDtc">Clear DTC information · 0x14</button></div>
+    <div class="uds-response"><div class="label">Last UDS transaction · request → response (hex)</div><code id="udsRequest">No request sent</code><code id="udsResponse">No response yet</code><div class="uds-meaning" id="udsMeaning" aria-live="polite">Send a UDS request. The response will be decoded here in addition to showing the raw hexadecimal payload.</div></div>
+  </article>
+  <article class="card"><div class="card-head"><div><div class="card-title">Stored diagnostic trouble codes</div><div class="card-sub">Only detected faults are listed. Recovered records remain until UDS service 0x14 clears them.</div></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>DTC</th><th>Description</th><th>Status byte</th><th>State</th><th>Status flags</th><th>Freeze frame</th></tr></thead><tbody id="dtcRows"><tr><td colspan="6" class="empty">No stored DTCs. This is the expected healthy baseline; inject a scenario fault or run the diagnostic self-test.</td></tr></tbody></table></div></article>
+  <article class="card" style="margin-top:14px"><div class="card-head"><div><div class="card-title">Supported diagnostic monitor catalogue</div><div class="card-sub">These are the six fault monitors implemented in AutoCore. “NOT SET” means the ECU is healthy; it does not mean the monitor is missing.</div></div><span class="pill">6 MONITORS</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>DTC</th><th>Monitor / trigger condition</th><th>Source</th><th>Current state</th></tr></thead><tbody id="dtcCatalogueRows"></tbody></table></div></article>
+</section>
+
+<section class="section" id="page-scenario">
+  <div class="notice">Scenario controls change the actual C++ ECU model. Faults remain injected until recovered or the simulation is reset. Communication timeout DTCs require more than 500 ms without ECU telemetry.</div>
+  <article class="card demo-panel"><div class="notice" style="margin-bottom:12px"><strong>Recommended demonstration:</strong> Click the blue self-test button once. Do not press other controls while it runs. It temporarily injects faults, verifies DTC and UDS responses, then restores the ECUs automatically.</div><div class="demo-toolbar"><div><div class="card-title">Guided full diagnostic self-test</div><div class="card-sub">Runs six real C++ fault scenarios, verifies all six DTCs, reads two freeze frames over ISO-TP, checks UDS services and confirms recovery. Expected result: 7 / 7 PASS.</div></div><button class="btn primary" id="runFullDemo">Run all diagnostic tests</button></div><div class="demo-progress" id="demoProgress">Ready. Start the guided test to verify fault detection, UDS responses, freeze frames and recovery. The test leaves recovered DTC history for review.</div><div class="demo-results" id="demoResults"><div class="empty">No test results yet. The test runs automatically and restores the vehicle model after every scenario.</div></div></article>
+  <div class="notice" id="scenarioFaultStatus"><strong>Current fault state:</strong> Normal baseline — no active DTCs. Select any injection button below. The live monitor cards will change from NORMAL to INJECTED and then ACTIVE when the Diagnostics ECU asserts its DTC.</div>
+  <div class="grid fault-monitor-grid" id="faultMonitor" aria-live="polite"></div>
+  <article class="card control-card"><div class="left"><strong>Simulation controls</strong><span>Pause or resume the 100 ms ECU task schedule; reset to a known baseline.</span></div><div class="control-row"><button class="btn primary" id="scenarioStart">▶ Start / Resume</button><button class="btn" id="scenarioPause">Ⅱ Pause</button><button class="btn" id="scenarioReset">↺ Reset simulation</button></div></article>
+  <div class="grid twocol">
+    <article class="card"><div class="card-head"><div><div class="card-title">Driver demand</div><div class="card-sub">Adjust simulated throttle input to influence RPM and electrical load.</div></div><span class="pill" id="throttleText">35%</span></div><div class="range-row"><input type="range" min="0" max="100" value="35" id="throttle"><span class="range-val" id="throttleValue">35%</span></div></article>
+    <article class="card"><div class="card-head"><div><div class="card-title">Body electronics</div><div class="card-sub">Operate body ECU signals.</div></div></div><div class="control-row"><button class="btn" id="toggleLights">Toggle headlights</button><button class="btn" id="toggleDoor">Toggle driver door</button></div><div class="muted" style="font-size:11px;margin-top:9px" id="bodyStatus">Headlights ON · Door CLOSED</div></article>
+  </div>
+  <div class="card control-card" style="margin-top:14px"><div class="left"><strong>Quick sensor-fault demonstration</strong><span>One click injects engine overtemperature and battery undervoltage together, producing P0217 and P0562.</span></div><button class="btn danger" id="injectSensorDemo">Inject paired sensor demo</button></div>
+  <div class="section-head" style="margin-top:19px"><div><h2>Fault injection bench</h2><p>Trigger diagnostic and communication failures to validate fault detection.</p></div></div>
+  <div class="grid fault-grid">
+    <article class="fault-card"><h3>Engine overtemperature</h3><p>Force coolant telemetry to 126 °C and verify P0217 detection.</p><button class="btn danger" data-action="fault_overtemp">Inject fault</button></article>
+    <article class="fault-card"><h3>Battery undervoltage</h3><p>Force battery voltage to 10.45 V and verify P0562 detection.</p><button class="btn danger" data-action="fault_low_voltage">Inject fault</button></article>
+    <article class="fault-card"><h3>Engine ECU offline</h3><p>Stop engine telemetry and allow network timeout monitoring to assert U0100.</p><button class="btn danger" data-action="fault_engine_offline">Disconnect ECU</button></article>
+    <article class="fault-card"><h3>Battery ECU offline</h3><p>Stop battery telemetry and allow network timeout monitoring to assert U0111.</p><button class="btn danger" data-action="fault_battery_offline">Disconnect ECU</button></article>
+    <article class="fault-card"><h3>Telemetry CRC corruption</h3><p>Corrupt a transmitted engine telemetry CRC byte and verify AC0001.</p><button class="btn danger" data-action="fault_crc">Corrupt frame</button></article>
+    <article class="fault-card"><h3>Rolling-counter sequence gap</h3><p>Alter the ECU freshness counter while resealing CRC to validate AC0002.</p><button class="btn danger" data-action="fault_counter">Corrupt counter</button></article>
+    <article class="fault-card"><h3>Release all injected faults</h3><p>Restore sensor values and ECU transmissions; monitors clear as valid telemetry returns.</p><button class="btn success" data-action="recover_all">Recover all</button></article>
+  </div>
+</section>
+
+<section class="section" id="page-logs">
+  <article class="card"><div class="card-head"><div><div class="card-title">Simulation event journal</div><div class="card-sub">Timestamped events produced by controls, diagnostic transitions and UDS requests.</div></div><div class="logs-toolbar"><input class="search" id="logSearch" placeholder="Filter event text..." aria-label="Filter event text"><button class="btn small" id="exportCsv">Export telemetry CSV</button></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Time (ms)</th><th>Level</th><th>Event</th></tr></thead><tbody id="logRows"></tbody></table></div></article>
+</section>
+<footer class="footer"><span>AutoCore v1.6.1 · Automotive Multi-ECU Communication & Diagnostics Platform</span><span>Educational host simulation · No physical vehicle connection</span></footer>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);let latest=null;let pollBusy=false;let lastFrames=0;let frameRate=0;let lastRateAt=performance.now();
+const pageNames={overview:'Network overview',network:'CAN network monitor','controller-health':'CAN controller health',diagnostics:'Diagnostics console',scenario:'Scenario laboratory',logs:'Event journal'};
+document.querySelectorAll('.nav button').forEach(btn=>btn.addEventListener('click',()=>showPage(btn.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(btn=>btn.addEventListener('click',()=>showPage(btn.dataset.goto)));
+function showPage(name){document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));document.querySelectorAll('.section[id^="page-"]').forEach(s=>s.classList.toggle('active',s.id==='page-'+name));$('pageTitle').textContent=pageNames[name]||'AutoCore';if(latest)render(latest)}
+async function api(path,options={}){const response=await fetch(path,{cache:'no-store',...options});const data=await response.json();if(!response.ok)throw new Error(data.error||'Request failed');return data}
+async function act(action,extra={}){if(fullDemoRunning){toast('The guided self-test is running. Wait for it to finish before using manual controls.');return}try{const data=await api('/api/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...extra})});render(data);const messages={fault_overtemp:'Engine overtemperature injected. P0217 should appear after the next ECU telemetry cycle.',fault_low_voltage:'Battery undervoltage injected. P0562 should appear after the next ECU telemetry cycle.',fault_sensor_demo:'Paired sensor demo injected. P0217 and P0562 should appear shortly.',fault_engine_offline:'Engine ECU disconnected. Wait just over 500 ms for U0100 timeout detection.',fault_battery_offline:'Battery ECU disconnected. Wait just over 500 ms for U0111 timeout detection.',fault_crc:'CRC fault latched. AC0001 will remain visible until Recover all.',fault_counter:'Rolling-counter fault latched. AC0002 will remain visible until Recover all.',recover_all:'Recovery requested. Wait for valid ECU telemetry and the DTC states to clear.'};if(messages[action])toast(messages[action])}catch(e){toast('Action failed: '+e.message)}}
+function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+async function sendAction(action,extra={}){const state=await api('/api/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...extra})});render(state);return state}
+async function waitForState(predicate,label,timeout=4500){const deadline=Date.now()+timeout;let last=null;while(Date.now()<deadline){last=await api('/api/state');render(last);if(predicate(last))return last;await sleep(100)}throw new Error('Timed out waiting for '+label+(last?' (simulation time '+last.time_ms+' ms)':''))}
+function showDemoResult(name,status,detail){const row=document.createElement('div');row.className='demo-result';const nameEl=document.createElement('strong');nameEl.textContent=name;const badge=document.createElement('span');badge.className='status '+(status==='PASS'?'pass':status==='FAIL'?'fail':'running');badge.textContent=status;const detailEl=document.createElement('span');detailEl.className='detail';detailEl.textContent=detail;row.append(nameEl,badge,detailEl);$('demoResults').appendChild(row)}
+async function runFullDiagnosticDemo(){
+  const button=$('runFullDemo');if(fullDemoRunning)return;fullDemoRunning=true;button.disabled=true;button.textContent='Running diagnostic tests…';$('demoResults').innerHTML='';
+  const cases=[
+    {name:'Engine overtemperature',action:'fault_overtemp',code:'P0217',timeout:2500,verify:s=>s.engine.temperature_c>=120,freeze:true},
+    {name:'Battery undervoltage',action:'fault_low_voltage',code:'P0562',timeout:2500,verify:s=>s.battery.voltage_v<11,freeze:true},
+    {name:'Engine ECU communication loss',action:'fault_engine_offline',code:'U0100',timeout:4000,verify:s=>!s.engine.online},
+    {name:'Battery ECU communication loss',action:'fault_battery_offline',code:'U0111',timeout:4000,verify:s=>!s.battery.online},
+    {name:'Telemetry CRC corruption',action:'fault_crc',code:'AC0001',timeout:2500,verify:s=>s.injected_faults&&s.injected_faults.crc===true},
+    {name:'Rolling-counter sequence gap',action:'fault_counter',code:'AC0002',timeout:2500,verify:s=>true}
+  ];
+  let passed=0;
+  try{
+    $('demoProgress').textContent='Starting C++ engine checks…';
+    await sendAction('start');
+    for(const test of cases){
+      $('demoProgress').textContent='Testing: '+test.name+' — injecting fault and waiting for the Diagnostics ECU…';
+      showDemoResult(test.name,'RUNNING','Waiting for '+test.code);
+      const row=$('demoResults').lastElementChild;
+      try{
+        await sendAction(test.action);
+        const detected=await waitForState(s=>test.verify(s)&&s.diagnostics.dtcs.some(d=>d.code===test.code&&d.active&&d.confirmed),test.code+' detection',test.timeout);
+        if(!detected.injected_faults)throw new Error('Engine did not publish injected-fault state');
+        const read=await sendAction('read_dtcs');
+        if(!String(read.uds.response||'').startsWith('59 02 2F'))throw new Error('UDS ReadDTCInformation returned '+(read.uds.response||'no response'));
+        let detail=test.code+' ACTIVE / CONFIRMED · UDS 0x19 positive response';
+        if(test.freeze){
+          const snapshot=await sendAction('read_freeze_frame',{code:test.code});
+          const expected=test.code==='P0217'?'59 04 00 02 17':'59 04 00 05 62';
+          if(!String(snapshot.uds.response||'').startsWith(expected))throw new Error('Freeze-frame response invalid: '+(snapshot.uds.response||'empty'));
+          const record=detected.diagnostics.dtcs.find(d=>d.code===test.code);
+          if(!record||!record.freeze_frame)throw new Error('Freeze-frame data missing from engine state');
+          detail+=' · freeze frame verified';
+        }
+        const status=row.querySelector('.status');status.className='status pass';status.textContent='PASS';row.querySelector('.detail').textContent=detail;passed++;
+        $('demoProgress').textContent='Passed '+passed+' of '+cases.length+' fault scenarios. Recovering before the next test…';
+        await sendAction('recover_all');
+        await waitForState(s=>!s.diagnostics.dtcs.some(d=>d.code===test.code&&d.active&&d.confirmed)&&s.engine.online&&s.battery.online&&s.engine.temperature_c<115&&s.battery.voltage_v>=11,
+          test.code+' recovery',5000);
+      }catch(err){
+        const status=row.querySelector('.status');status.className='status fail';status.textContent='FAIL';row.querySelector('.detail').textContent=err.message;throw err;
+      }
+    }
+    $('demoProgress').textContent='Checking remaining UDS services…';
+    for(const did of ['F40C','F405','F411']){
+      const response=await sendAction('read_did',{did});
+      if(!String(response.uds.response||'').startsWith('62 '+did.slice(0,2)+' '+did.slice(2)))throw new Error('UDS DID '+did+' did not return a positive response');
+    }
+    const session=await sendAction('uds_session');if(!String(session.uds.response||'').startsWith('50 03'))throw new Error('Extended diagnostic session failed');
+    const tester=await sendAction('tester_present');if(!String(tester.uds.response||'').startsWith('7E 00'))throw new Error('Tester Present failed');
+    const resetAck=await sendAction('uds_reset');if(!String(resetAck.uds.response||'').startsWith('51 01'))throw new Error('Simulated ECU Reset acknowledgement failed');
+    showDemoResult('UDS DIDs, session, Tester Present and reset acknowledgement','PASS','0x22 × 3 · 0x10 · 0x3E · simulated 0x11');
+    passed++;
+    await sendAction('read_dtcs');
+    $('demoProgress').textContent='COMPLETE: '+passed+' / '+(cases.length+1)+' test groups passed. All injected faults have been recovered; stored DTC history remains available in Diagnostics.';
+    toast('AutoCore diagnostic self-test passed: '+passed+' / '+(cases.length+1)+' groups.');
+  }catch(err){
+    $('demoProgress').textContent='SELF-TEST FAILED after '+passed+' successful groups: '+err.message+'. Recovery was requested to restore the vehicle model.';
+    showDemoResult('Self-test recovery','RUNNING','Releasing injected faults…');
+    try{await sendAction('recover_all');await waitForState(s=>s.diagnostics.active_faults===0, 'fault recovery',5000);$('demoResults').lastElementChild.querySelector('.status').className='status pass';$('demoResults').lastElementChild.querySelector('.status').textContent='PASS';$('demoResults').lastElementChild.querySelector('.detail').textContent='Vehicle returned to normal state'}catch(recoveryError){$('demoResults').lastElementChild.querySelector('.detail').textContent='Recovery check: '+recoveryError.message}
+    toast('Diagnostic self-test did not complete: '+err.message);
+  }finally{fullDemoRunning=false;button.disabled=false;button.textContent='Run all diagnostic tests'}
+}
+let fullDemoRunning=false;
+function toast(message){const box=document.createElement('div');box.textContent=message;box.style.cssText='position:fixed;right:18px;bottom:18px;z-index:50;background:#172b42;border:1px solid #41658d;color:#e8f2ff;padding:12px 15px;border-radius:10px;box-shadow:0 12px 35px #0008;max-width:390px;font-size:12px';document.body.appendChild(box);setTimeout(()=>box.remove(),4500)}
+$('runToggle').addEventListener('click',()=>act(latest?.running?'pause':'start'));
+$('resetBtn').addEventListener('click',()=>act('reset'));
+$('scenarioStart').addEventListener('click',()=>act('start'));
+$('scenarioPause').addEventListener('click',()=>act('pause'));
+$('scenarioReset').addEventListener('click',()=>act('reset'));
+$('injectSensorDemo').addEventListener('click',()=>act('fault_sensor_demo'));
+$('diagInjectDemo').addEventListener('click',()=>act('fault_sensor_demo'));
+$('diagReadNow').addEventListener('click',()=>act('read_dtcs'));
+$('diagRecoverDemo').addEventListener('click',()=>act('recover_all'));
+$('runFullDemo').addEventListener('click',runFullDiagnosticDemo);
+$('globalDemoBtn').addEventListener('click',()=>{showPage('scenario');runFullDiagnosticDemo()});
+$('overviewRunDemo').addEventListener('click',()=>{showPage('scenario');runFullDiagnosticDemo()});
+$('throttle').addEventListener('input',e=>{$('throttleValue').textContent=e.target.value+'%';$('throttleText').textContent=e.target.value+'%'});
+$('throttle').addEventListener('change',e=>act('set_throttle',{value:Number(e.target.value)}));
+$('toggleLights').addEventListener('click',()=>act('toggle_lights'));
+$('toggleDoor').addEventListener('click',()=>act('toggle_door'));
+document.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>act(btn.dataset.action)));
+$('readDid').addEventListener('click',()=>act('read_did',{did:$('didSelect').value}));
+$('readDtc').addEventListener('click',()=>act('read_dtcs'));
+$('readFreeze').addEventListener('click',()=>{if(!$('freezeDtcSelect').value){toast('No freeze-frame snapshot is available. Inject a fault first.');return}act('read_freeze_frame',{code:$('freezeDtcSelect').value})});
+$('sessionBtn').addEventListener('click',()=>act('uds_session'));
+$('testerBtn').addEventListener('click',()=>act('tester_present'));
+$('resetEcuBtn').addEventListener('click',()=>act('uds_reset')); 
+$('clearDtc').addEventListener('click',()=>{if(confirm('Send UDS ClearDiagnosticInformation (0x14) to clear stored DTC status and freeze frames?'))act('clear_dtcs')});
+$('exportCsv').addEventListener('click',()=>{window.location.href='/api/export.csv'});
+$('applyCanFilter').addEventListener('click',()=>act('set_can_filter',{can_id:$('canFilterId').value,mask:$('canFilterMask').value.trim()}));
+$('clearCanFilter').addEventListener('click',()=>act('clear_can_filter'));
+function selectedController(){return $('controllerNode').value}
+async function controllerAction(action,extra={}){if(fullDemoRunning){toast('The guided self-test is running. Wait for it to finish before using controller controls.');return}try{const data=await api('/api/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,node:selectedController(),...extra})});render(data);const chosen=(data.can.controller_health.controllers||[]).find(x=>x.key===selectedController());if(chosen&&chosen.state==='BUS_OFF')toast(chosen.name+' is BUS-OFF. Other ECU nodes remain active.');else toast('CAN controller action applied to '+selectedController()+'.')}catch(e){toast('CAN controller action failed: '+e.message)}}
+$('controllerNode').addEventListener('change',()=>{if(latest)renderControllerHealth(latest.can.controller_health||{})});
+$('canTxPassive').addEventListener('click',()=>controllerAction('can_tx_error_burst',{count:24}));
+$('canTxBusOff').addEventListener('click',()=>controllerAction('can_tx_error_burst',{count:32}));
+$('canRxPassive').addEventListener('click',()=>controllerAction('can_rx_error_burst',{count:128}));
+$('canTxToggle').addEventListener('click',()=>{const c=(latest?.can.controller_health.controllers||[]).find(x=>x.key===selectedController());controllerAction('can_tx_error_injection',{enabled:!c?.tx_error_injection})});
+$('canRxToggle').addEventListener('click',()=>{const c=(latest?.can.controller_health.controllers||[]).find(x=>x.key===selectedController());controllerAction('can_rx_error_injection',{enabled:!c?.rx_error_injection})});
+$('canRecoveryBtn').addEventListener('click',()=>controllerAction('can_bus_off_recovery'));
+$('canHealthReset').addEventListener('click',()=>{if(confirm('Reset the entire vehicle simulation, all DTCs, and all CAN controller counters to their initial state?'))act('reset')});
+$('logSearch').addEventListener('input',()=>{if(latest)renderEvents(latest.events||[])});
+function fmtTime(ms){return (ms/1000).toFixed(1)+' s'}
+function render(s){latest=s;
+  $('runPill').classList.toggle('paused',!s.running);$('runPill').innerHTML='<i class="dot"></i><span>'+(s.running?'SIMULATION RUNNING':'SIMULATION PAUSED')+'</span>';$('runToggle').textContent=s.running?'Ⅱ Pause':'▶ Resume';
+  $('rpm').textContent=Number(s.engine.rpm).toLocaleString();$('temp').textContent=s.engine.temperature_c;$('voltage').textContent=Number(s.battery.voltage_v).toFixed(2);
+  $('rpmFoot').textContent=(s.engine.online?'Engine ECU online':'Engine ECU offline')+' · 0x100';$('tempFoot').textContent=s.engine.temperature_c>115?'Overtemperature detected':'Within simulated range';$('tempFoot').className='kpi-foot '+(s.engine.temperature_c>115?'bad':'good');
+  $('voltageFoot').textContent=s.battery.online?'Battery ECU · '+s.battery.current_a.toFixed(2)+' A':'Battery ECU offline';$('voltageFoot').className='kpi-foot '+(s.battery.voltage_v<11?'bad':'');
+  const active=s.diagnostics.active_faults;$('activeDtcs').textContent=active;$('dtcFoot').textContent=active?active+' active diagnostic condition(s)':'No active diagnostic faults';$('dtcFoot').className='kpi-foot '+(active?'bad':'good');
+  $('diagActive').textContent=active;$('diagStored').textContent=s.diagnostics.dtc_count;
+  $('frameTotal').textContent=Number(s.can.frames_total).toLocaleString();$('framesPill').textContent=Number(s.can.frames_total).toLocaleString()+' FRAMES';
+  const now=performance.now(),elapsed=(now-lastRateAt)/1000;if(elapsed>0.8){frameRate=(s.can.frames_total-lastFrames)/elapsed;lastFrames=s.can.frames_total;lastRateAt=now}$('frameRate').textContent=frameRate.toFixed(1);
+  $('bodyStatus').textContent='Headlights '+(s.body.headlights?'ON':'OFF')+' · Door '+(s.body.door_open?'OPEN':'CLOSED');
+  const online=[s.engine.online,s.battery.online,s.body.online,true].filter(Boolean).length;$('ecuCount').textContent=online+' / 4 ONLINE';
+  renderEcus(s);renderFrames(s.can.last_frames||[]);renderCanMonitor(s.can);renderControllerHealth(s.can.controller_health||{});renderDtcs(s.diagnostics.dtcs||[]);renderMonitorCatalogue(s);renderEvents(s.events||[]);renderUds(s.uds||{});renderFaultHints(s);renderFaultMonitor(s);renderFreezeFrameOptions(s.diagnostics.dtcs||[]);
+  const throttle=$('throttle');if(document.activeElement!==throttle){throttle.value=s.throttle;$('throttleValue').textContent=s.throttle+'%';$('throttleText').textContent=s.throttle+'%'}
+  drawChart($('mainChart'),s.history||[],[{key:'rpm',label:'RPM',color:'#67aaff',scale:6000},{key:'speed_kph',label:'Speed',color:'#55d4cf',scale:180}]);
+  drawChart($('electricalChart'),s.history||[],[{key:'voltage_v',label:'Voltage',color:'#f0bb61',min:9,max:15},{key:'current_a',label:'Current',color:'#a58bff',min:-1,max:5}]);
+}
+function renderEcus(s){const rows=[{name:'Engine ECU',id:'0x100',online:s.engine.online,values:[['RPM',s.engine.rpm],['Coolant',s.engine.temperature_c+' °C'],['Speed',s.engine.speed_kph+' km/h']]},{name:'Battery ECU',id:'0x110',online:s.battery.online,values:[['Voltage',s.battery.voltage_v.toFixed(2)+' V'],['Current',s.battery.current_a.toFixed(2)+' A'],['Temperature',s.battery.temperature_c+' °C']]},{name:'Body ECU',id:'0x120',online:s.body.online,values:[['Headlights',s.body.headlights?'ON':'OFF'],['Door',s.body.door_open?'OPEN':'CLOSED']]},{name:'Diagnostics ECU',id:'0x7E8',online:s.diagnostics.online,values:[['Active DTCs',s.diagnostics.active_faults],['Stored DTCs',s.diagnostics.dtc_count]]}];$('ecuList').innerHTML=rows.map(e=>`<div class="ecu-row"><div><strong>${e.name}</strong><div class="ecu-meta">CAN / diagnostic address ${e.id}</div></div><span class="status ${e.online?'online':'offline'}">${e.online?'ONLINE':'OFFLINE'}</span><div class="ecu-value">${e.values.map(v=>`<span>${v[0]} <b>${v[1]}</b></span>`).join('')}</div></div>`).join('')}
+function renderFrames(frames){const rows=frames.slice().reverse().map(f=>`<tr><td class="mono">${f.time_ms}</td><td class="mono">${f.id}</td><td>${escapeHtml(f.name||'UNMAPPED')}</td><td>${f.dlc}</td><td class="mono">${f.data}</td><td><span class="status ${f.valid_crc?'online':'offline'}">${f.valid_crc?'VALID':'CRC ERROR'}</span></td></tr>`).join('');$('frameRows').innerHTML=rows||'<tr><td colspan="6" class="empty">No frames match the current acceptance filter.</td></tr>'}
+function renderCanMonitor(can){const m=can.monitor||{};$('canFilterState').textContent=m.filter_active?('FILTER '+m.filter_id+' / '+m.filter_mask):'ALL FRAMES';$('canFilterStats').textContent='Accepted '+Number(m.accepted||0).toLocaleString()+' · Filtered out '+Number(m.rejected||0).toLocaleString();const db=can.message_database||{};$('matrixCount').textContent=Number(db.message_count||0)+' MESSAGES · '+Number(db.signal_count||0)+' SIGNALS';$('matrixRows').innerHTML=(db.messages||[]).map(x=>`<tr><td><strong>${escapeHtml(x.name)}</strong></td><td class="mono">${escapeHtml(x.id)}</td><td>${x.period_ms===null?'On demand':x.period_ms+' ms'}</td><td>${x.dlc}</td><td>${x.signals}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">CAN message matrix unavailable.</td></tr>'}
+function renderControllerHealth(health){
+  const controllers=health.controllers||[];
+  $('canActiveCount').textContent=Number(health.error_active_count||0);
+  $('canPassiveCount').textContent=Number(health.error_passive_count||0);
+  $('canBusOffCount').textContent=Number(health.bus_off_count||0);
+  $('canRecoveryCount').textContent=controllers.reduce((sum,item)=>sum+Number(item.bus_off_recoveries||0),0);
+  $('controllerHealthRows').innerHTML=controllers.map(item=>{
+    const state=String(item.state||'ERROR_ACTIVE');
+    const stateClass=state==='BUS_OFF'?'busoff':state==='ERROR_PASSIVE'?'passive':'active';
+    const tec=Number(item.tec||0),rec=Number(item.rec||0),required=Number(item.recovery_sequences_required||128);
+    const progress=Math.min(100,100*Number(item.recovery_sequences_seen||0)/Math.max(1,required));
+    const txOn=!!item.tx_error_injection,rxOn=!!item.rx_error_injection;
+    const recovery=item.recovery_in_progress?`${item.recovery_sequences_seen}/${required} sequences · ${progress.toFixed(0)}%`:(state==='BUS_OFF'?'Recovery not started':'—');
+    return `<tr><td><strong>${escapeHtml(item.name)}</strong><div class="muted mono">${escapeHtml(item.key)}</div></td><td class="counter-cell"><strong>${tec}</strong><div class="counter-track"><div class="counter-fill ${tec>=256?'bad':tec>=128?'warn':''}" style="width:${Math.min(100,100*tec/256)}%"></div></div></td><td class="counter-cell"><strong>${rec}</strong><div class="counter-track"><div class="counter-fill ${rec>=128?'warn':''}" style="width:${Math.min(100,100*rec/255)}%"></div></div></td><td><span class="controller-state ${stateClass}">${state.replace('_',' ')}</span></td><td>${Number(item.tx_successes||0).toLocaleString()} / ${Number(item.tx_errors||0).toLocaleString()}<div class="muted" style="font-size:9px">${Number(item.tx_attempts||0).toLocaleString()} attempts</div></td><td>${Number(item.rx_successes||0).toLocaleString()} / ${Number(item.rx_errors||0).toLocaleString()}</td><td><span class="status ${txOn||rxOn?'warning':'online'}">TX ${txOn?'INJECT':'OFF'} · RX ${rxOn?'INJECT':'OFF'}</span></td><td>${item.recovery_in_progress?`<div class="recovery-track"><div class="recovery-fill" style="width:${progress}%"></div></div><div class="muted" style="font-size:9px;margin-top:4px">${recovery}</div>`:escapeHtml(recovery)}<div class="muted" style="font-size:9px">Recoveries: ${Number(item.bus_off_recoveries||0)}</div></td></tr>`;
+  }).join('')||'<tr><td colspan="8" class="empty">Controller health data is unavailable.</td></tr>';
+  const selected=$('controllerNode').value;
+  const controller=controllers.find(item=>item.key===selected);
+  if(controller){
+    $('canTxToggle').textContent=controller.tx_error_injection?'Disable continuous TX errors':'Enable continuous TX errors';
+    $('canRxToggle').textContent=controller.rx_error_injection?'Disable continuous RX errors':'Enable continuous RX errors';
+    const anyTxInjection=controllers.some(item=>item.tx_error_injection);
+    $('canRecoveryBtn').disabled=controller.state!=='BUS_OFF'||anyTxInjection||controller.recovery_in_progress;
+    $('canControllerActionHint').textContent=controller.state==='BUS_OFF'?(anyTxInjection?'Disable every continuous TX injector across all ECUs before recovery.':controller.recovery_in_progress?`Recovery progress: ${recovery}`:'Controller is Bus-Off. Start the 128-sequence recovery.'):(controller.state==='ERROR_PASSIVE'?'Controller is Error Passive. Valid traffic reduces its error counter.':'Selected controller is Error Active. Inject errors to demonstrate confinement.');
+  }
+}
+function decodeDtcStatus(status){const flags=[];if(status&0x01)flags.push('TEST FAILED');if(status&0x02)flags.push('FAILED THIS CYCLE');if(status&0x04)flags.push('PENDING');if(status&0x08)flags.push('CONFIRMED');if(status&0x10)flags.push('NOT COMPLETED SINCE CLEAR');if(status&0x20)flags.push('FAILED SINCE CLEAR');if(status&0x40)flags.push('NOT COMPLETED THIS CYCLE');if(status&0x80)flags.push('WARNING REQUESTED');return flags.length?flags.join(' · '):'No failure status bits'}
+function renderDtcs(items){const recorded=items.filter(d=>d.active||Number(d.status)!==0);$('dtcRows').innerHTML=recorded.map(d=>{const ff=d.freeze_frame?`${d.freeze_frame.rpm} rpm · ${d.freeze_frame.temperature_c} °C · ${d.freeze_frame.battery_v.toFixed(2)} V`:'—';return `<tr><td class="mono"><strong>${escapeHtml(d.code)}</strong></td><td>${escapeHtml(d.description)}</td><td class="mono">0x${Number(d.status).toString(16).padStart(2,'0').toUpperCase()}</td><td><span class="status ${d.active?'dtc-active':'dtc-inactive'}">${d.active?(d.confirmed?'ACTIVE · CONFIRMED':'ACTIVE · PENDING'):(d.confirmed?'RECOVERED · CONFIRMED':Number(d.status)!==0?'RECOVERED · HISTORY':'CLEARED')}</span></td><td class="dtc-flags">${decodeDtcStatus(Number(d.status))}</td><td>${ff}</td></tr>`}).join('')||'<tr><td colspan="6" class="empty">No stored DTCs. This is a healthy baseline. Use the paired sensor-fault demo or run the guided self-test in Scenario Lab.</td></tr>'}
+function dtcLifecycleLabel(record){
+  if(!record)return 'NOT SET';
+  const status=Number(record.status||0),samples=Number(record.failure_samples||0);
+  if(record.active&&record.confirmed)return 'ACTIVE / CONFIRMED';
+  if(record.active)return 'PENDING ('+samples+'/3)';
+  if(record.confirmed||status!==0)return record.confirmed?'RECOVERED / CONFIRMED':'RECOVERED / HISTORY';
+  return 'NOT SET';
+}
+function renderMonitorCatalogue(s){
+  const records=s.diagnostics.dtcs||[];
+  const monitors=[
+    ['P0217','Engine coolant temperature above 115 °C','Engine ECU telemetry'],
+    ['P0562','Battery system voltage below 11.0 V','Battery ECU telemetry'],
+    ['U0100','No valid Engine ECU telemetry for more than 500 ms','Network timeout monitor'],
+    ['U0111','No valid Battery ECU telemetry for more than 500 ms','Network timeout monitor'],
+    ['AC0001','Telemetry CRC-8/SAE-J1850 integrity mismatch','Diagnostics ECU integrity monitor'],
+    ['AC0002','Rolling counter is not the expected modulo-256 successor','Diagnostics ECU sequence monitor']
+  ];
+  $('dtcCatalogueRows').innerHTML=monitors.map(([code,trigger,source])=>{
+    const record=records.find(d=>d.code===code),active=!!(record&&record.active),stored=!!(record&&Number(record.status)!==0);
+    const status=dtcLifecycleLabel(record);
+    const cls=active?(record.confirmed?'offline':'warning'):stored?'warning':'online';
+    return `<tr><td class="mono"><strong>${code}</strong></td><td>${trigger}</td><td>${source}</td><td><span class="status ${cls}">${status}</span></td></tr>`;
+  }).join('');
+}
+function renderEvents(events){const filter=($('logSearch')?.value||'').toLowerCase();const filtered=events.filter(e=>(e.message+' '+e.level).toLowerCase().includes(filter));const html=filtered.slice().reverse().map(e=>`<tr><td class="mono">${fmtTime(e.time_ms)}</td><td><span class="event-level ${e.level}">${e.level}</span></td><td>${escapeHtml(e.message)}</td></tr>`).join('');$('logRows').innerHTML=html||'<tr><td colspan="3" class="empty">No matching events.</td></tr>';$('recentEvents').innerHTML=filtered.slice(-6).reverse().map(e=>`<div class="event-row"><div class="event-time">${fmtTime(e.time_ms)}</div><div class="event-msg"><span class="event-level ${e.level}">${e.level}</span>${escapeHtml(e.message)}</div></div>`).join('')||'<div class="empty">No recent events.</div>'}
+function renderUds(uds){$('udsRequest').textContent=uds.request||'No request sent';$('udsResponse').textContent=uds.response||'No response yet';const bytes=(uds.response||'').trim().split(/\s+/).filter(Boolean).map(v=>Number.parseInt(v,16));let meaning='No diagnostic transaction has been sent yet.';let tone='';if(bytes.length&&bytes.every(Number.isFinite)){if(bytes[0]===0x7F){const nrc={0x11:'Service not supported',0x12:'Subfunction not supported',0x13:'Incorrect message length or invalid format',0x22:'Conditions not correct',0x31:'Request out of range',0x33:'Security access denied',0x78:'Response pending'};meaning='Negative response: '+(nrc[bytes[2]]||'NRC 0x'+Number(bytes[2]||0).toString(16).toUpperCase())+' (service 0x'+Number(bytes[1]||0).toString(16).padStart(2,'0').toUpperCase()+').';tone='bad'}else if(bytes[0]===0x62&&bytes.length>=5){const did=(bytes[1]<<8)|bytes[2],raw=(bytes[3]<<8)|bytes[4];if(did===0xF40C)meaning='Positive response: Engine speed is '+raw+' RPM.';else if(did===0xF405)meaning='Positive response: Engine coolant temperature is '+raw+' °C.';else if(did===0xF411)meaning='Positive response: Battery voltage is '+(raw/1000).toFixed(2)+' V.';else meaning='Positive ReadDataByIdentifier response for DID 0x'+did.toString(16).toUpperCase()+'.';tone='good'}else if(bytes[0]===0x59&&bytes[1]===0x02){const count=Math.max(0,Math.floor((bytes.length-3)/4));meaning='Positive ReadDTCInformation response: '+count+' stored DTC record(s) match status mask 0x'+Number(bytes[2]).toString(16).padStart(2,'0').toUpperCase()+'. Check the DTC register below.';tone='good'}else if(bytes[0]===0x59&&bytes[1]===0x04){const code=bytes.slice(2,5).map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();const count=bytes[7]||0;let offset=8;const decoded=[];for(let i=0;i<count&&offset+2<=bytes.length;i++){const did=(bytes[offset]<<8)|bytes[offset+1];offset+=2;const lengths={0xF40C:2,0xF405:2,0xF40D:2,0xF411:2,0xF4A0:4};const length=lengths[did];if(!length||offset+length>bytes.length)break;let raw=0;for(let j=0;j<length;j++)raw=(raw*256)+bytes[offset++];const labels={0xF40C:'RPM',0xF405:'Coolant',0xF40D:'Speed',0xF411:'Battery',0xF4A0:'Timestamp'};const formatted=did===0xF411?(raw/1000).toFixed(2)+' V':did===0xF405?raw+' °C':did===0xF40D?raw+' km/h':did===0xF40C?raw+' rpm':raw+' ms';decoded.push(labels[did]+' '+formatted)}meaning='Positive freeze-frame response for DTC '+code+'. Snapshot: '+(decoded.join(' · ')||'raw snapshot received')+'. Multi-frame ISO-TP response verified.';tone='good'}else if(bytes[0]===0x54){meaning='Positive ClearDiagnosticInformation response. Stored DTC status and freeze-frame records were cleared.';tone='good'}else if(bytes[0]===0x50){meaning='Positive DiagnosticSessionControl response. The ECU accepted diagnostic session 0x'+Number(bytes[1]||0).toString(16).padStart(2,'0').toUpperCase()+'.';tone='good'}else if(bytes[0]===0x7E){meaning='Positive TesterPresent response. The diagnostic session keep-alive was acknowledged.';tone='good'}else if(bytes[0]===0x51){meaning='Positive ECUReset acknowledgement. This is simulated; it does not restart a physical ECU or host process.';tone='warn'}else if(bytes[0]===0x7F){tone='bad'}else{meaning='UDS response received. Inspect the raw bytes above for the service-specific payload.'}}const box=$('udsMeaning');box.textContent=meaning;box.className='uds-meaning '+tone}
+
+function renderFaultHints(s){
+  const items=s.diagnostics.dtcs||[],active=items.filter(d=>d.active),stored=items.filter(d=>Number(d.status)!==0).length,flags=s.injected_faults||{};
+  const injected=Object.values(flags).some(Boolean),codes=active.map(d=>escapeHtml(d.code)).join(', ');
+  const scenario=$('scenarioFaultStatus'),diag=$('diagnosticHint'),overview=$('overviewHealthHint');
+  if(active.length){
+    scenario.className='notice fault-active';scenario.innerHTML='<strong>ACTIVE FAULTS ('+active.length+'):</strong> <span class="fault-codes">'+codes+'</span> — click Diagnostics → Read DTC records (0x19) to inspect the actual UDS response.';
+    diag.className='notice fault-active';diag.innerHTML='<strong>Detected faults:</strong> <span class="fault-codes">'+codes+'</span>. Read DTC records (0x19), then select a DTC with a captured snapshot and request Freeze Frame (0x19 04).';
+    overview.className='notice overview-health fault-active';overview.querySelector('.health-copy').innerHTML='<strong>Diagnostic faults detected: '+active.length+'</strong><span>'+codes+' are active in the C++ Diagnostics ECU. Read the DTC records or run the guided test after recovery.</span>';
+  }else if(injected){
+    scenario.className='notice fault-active';scenario.innerHTML='<strong>FAULT INJECTION ACTIVE:</strong> The C++ engine accepted the command. Waiting for the ECU telemetry or 500 ms communication-timeout monitor to assert the DTC.';
+    diag.className='notice fault-active';diag.innerHTML='<strong>Fault injection active:</strong> Waiting for the monitor. The active DTC will appear here as soon as the Diagnostics ECU detects it.';
+    overview.className='notice overview-health fault-active';overview.querySelector('.health-copy').innerHTML='<strong>Fault injection is being monitored</strong><span>The C++ simulation accepted an injected fault. Allow the telemetry/timeout monitor to update the DTC register.</span>';
+  }else if(stored){
+    scenario.className='notice';scenario.innerHTML='<strong>Recovery state:</strong> No active faults. '+stored+' stored DTC record(s) remain after recovery. Read them in Diagnostics or clear them using service 0x14.';
+    diag.className='notice';diag.innerHTML='<strong>ECUs recovered.</strong> '+stored+' historical DTC record(s) remain. Their active bit is clear; service 0x14 clears the diagnostic memory.';
+    overview.className='notice overview-health';overview.querySelector('.health-copy').innerHTML='<strong>Vehicle simulation recovered · '+stored+' historical DTCs retained</strong><span>No faults are currently active. The recorded history remains available in Diagnostics until you clear it.</span>';
+  }else{
+    scenario.className='notice';scenario.innerHTML='<strong>Normal baseline:</strong> No active faults. This is expected at startup. Click “Run all diagnostic tests” above to demonstrate all six fault monitors and UDS recovery.';
+    diag.className='notice';diag.innerHTML='<strong>Healthy baseline — diagnostics are working and waiting for a test.</strong> Click “Inject P0217 + P0562” to create two sensor DTCs immediately, or use the guided self-test to exercise all six DTC monitors and UDS services.';
+    overview.className='notice overview-health';overview.querySelector('.health-copy').innerHTML='<strong>Healthy baseline — all diagnostic monitors are ready</strong><span>No active faults is normal. Run the guided self-test to prove overtemperature, undervoltage, communication, CRC and counter detection.</span>';
+  }
+}
+function renderFaultMonitor(s){const flags=s.injected_faults||{},dtcs=s.diagnostics.dtcs||[];const checks=[{name:'Engine overtemperature',flag:flags.overtemperature,code:'P0217',value:'Coolant '+s.engine.temperature_c+' °C',threshold:s.engine.temperature_c>=120},{name:'Battery undervoltage',flag:flags.low_voltage,code:'P0562',value:'Battery '+s.battery.voltage_v.toFixed(2)+' V',threshold:s.battery.voltage_v<11},{name:'Engine ECU communication',flag:flags.engine_offline,code:'U0100',value:s.engine.online?'ECU online':'ECU offline',threshold:!s.engine.online},{name:'Battery ECU communication',flag:flags.battery_offline,code:'U0111',value:s.battery.online?'ECU online':'ECU offline',threshold:!s.battery.online},{name:'Telemetry CRC integrity',flag:flags.crc,code:'AC0001',value:'Engine CAN ID 0x100',threshold:(s.can.last_frames||[]).some(f=>!f.valid_crc)},{name:'Rolling-counter sequence',flag:flags.counter,code:'AC0002',value:'Engine CAN ID 0x100',threshold:flags.counter}];$('faultMonitor').innerHTML=checks.map(item=>{const record=dtcs.find(d=>d.code===item.code),active=!!(record&&record.active),stored=!!(record&&Number(record.status)!==0);const observed=!!item.threshold;const state=active?(record.confirmed?'ACTIVE / CONFIRMED':'PENDING ('+Number(record.failure_samples||0)+'/3)'):observed||item.flag?'INJECTED / MONITORING':stored?'RECOVERED / STORED':'NORMAL';const cls=active?(record.confirmed?'is-active':'is-injected'):observed||item.flag?'is-injected':stored?'is-stored':'';const badge=active?(record.confirmed?'offline':'warning'):observed||item.flag?'warning':stored?'warning':'online';return `<article class="fault-monitor-card ${cls}"><div class="fault-monitor-head"><span>${item.name}</span><span class="status ${badge}">${state}</span></div><div class="fault-monitor-value">${item.value} · DTC ${item.code}</div></article>`}).join('')}
+function renderFreezeFrameOptions(items){const select=$('freezeDtcSelect'),available=items.filter(d=>d.freeze_frame);const current=select.value;const choices=available.length?available:[{code:'',description:'No snapshot available yet'}];select.innerHTML=choices.map(d=>`<option value="${escapeHtml(d.code)}">${escapeHtml(d.code)}${d.description?' — '+escapeHtml(d.description):''}</option>`).join('');if(available.some(d=>d.code===current))select.value=current;$('readFreeze').disabled=!available.length;}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function drawChart(canvas,items,series){const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.max(240,rect.width),h=210;canvas.width=w*dpr;canvas.height=h*dpr;const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);const left=42,right=12,top=12,bottom=25,cw=w-left-right,ch=h-top-bottom;ctx.font='10px Segoe UI';ctx.strokeStyle='#263951';ctx.fillStyle='#8296af';ctx.lineWidth=1;for(let i=0;i<=4;i++){const y=top+ch*i/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();ctx.fillText((100-25*i)+'%',4,y+3)}ctx.fillStyle='#8194ac';ctx.fillText('Recent samples',left,h-5);if(items.length<2){ctx.fillText('Collecting live samples...',left+12,top+ch/2);return}series.forEach((s,idx)=>{const lo=s.min??0,hi=s.max??s.scale;ctx.strokeStyle=s.color;ctx.lineWidth=2;ctx.beginPath();items.forEach((item,i)=>{const x=left+(i/(items.length-1))*cw;const value=Number(item[s.key]??0);const y=top+ch-(Math.max(lo,Math.min(hi,value))-lo)/(hi-lo)*ch;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();const last=items[items.length-1],v=Number(last[s.key]??0);const y=top+ch-(Math.max(lo,Math.min(hi,v))-lo)/(hi-lo)*ch;ctx.fillStyle=s.color;ctx.beginPath();ctx.arc(w-right,y,3.2,0,Math.PI*2);ctx.fill()})}
+let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(latest)render(latest)},120)});
+async function poll(){if(pollBusy)return;pollBusy=true;try{const state=await api('/api/state');render(state)}catch(e){$('runPill').classList.add('paused');$('runPill').innerHTML='<i class="dot"></i><span>ENGINE CONNECTION ERROR</span>'}finally{pollBusy=false}}
+poll();setInterval(poll,500);
+</script>
+</body></html>
